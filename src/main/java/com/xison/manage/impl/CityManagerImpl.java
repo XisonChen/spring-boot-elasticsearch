@@ -1,9 +1,8 @@
-package com.xison.service.impl;
+package com.xison.manage.impl;
 
-import com.sun.org.apache.regexp.internal.RE;
 import com.xison.model.City;
 import com.xison.repository.CityRepository;
-import com.xison.service.CityService;
+import com.xison.manage.CityManager;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.index.query.functionscore.FunctionScoreQueryBuilder;
 import org.elasticsearch.index.query.functionscore.ScoreFunctionBuilders;
@@ -24,9 +23,9 @@ import java.util.List;
  * on 2017/10/30-1:15
  */
 @Service
-public class CityServiceImpl implements CityService {
+public class CityManagerImpl implements CityManager {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(CityServiceImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CityManagerImpl.class);
 
     @Resource
     private CityRepository cityRepository;
@@ -43,11 +42,9 @@ public class CityServiceImpl implements CityService {
         Pageable pageable = new PageRequest(pageNumber, pageSize);
 
         // Function Score Query
-        FunctionScoreQueryBuilder functionScoreQueryBuilder = QueryBuilders.functionScoreQuery()
-                .add(QueryBuilders.boolQuery().should(QueryBuilders.matchQuery("cityname", searchContent)),
-                        ScoreFunctionBuilders.weightFactorFunction(1000))
-                .add(QueryBuilders.boolQuery().should(QueryBuilders.matchQuery("description", searchContent)),
-                        ScoreFunctionBuilders.weightFactorFunction(100));
+        FunctionScoreQueryBuilder functionScoreQueryBuilder = QueryBuilders.functionScoreQuery(
+                QueryBuilders.boolQuery().should(QueryBuilders.matchQuery("cityname", searchContent)),
+                ScoreFunctionBuilders.weightFactorFunction(1000));
 
         // 创建搜索 DSL 查询
         SearchQuery searchQuery = new NativeSearchQueryBuilder()

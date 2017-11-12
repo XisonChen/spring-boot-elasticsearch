@@ -2,6 +2,7 @@ package com.xison;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 
 /**
  * spring boot 应用启动类
@@ -9,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * on 2017/10/30-1:09
  */
 @SpringBootApplication
+@EnableElasticsearchRepositories
 public class Application {
 
     public static void main(String[] args) {

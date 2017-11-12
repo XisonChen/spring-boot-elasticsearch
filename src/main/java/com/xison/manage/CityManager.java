@@ -1,4 +1,4 @@
-package com.xison.service;
+package com.xison.manage;
 
 import com.xison.model.City;
 
@@ -8,7 +8,7 @@ import java.util.List;
  * created by Xison Chen
  * on 2017/10/30-1:14
  */
-public interface CityService {
+public interface CityManager {
     /**
      * 新增城市信息
      *

@@ -1,7 +1,7 @@
 package com.xison.controller;
 
 import com.xison.model.City;
-import com.xison.service.CityService;
+import com.xison.manage.CityManager;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -15,18 +15,18 @@ import java.util.List;
 public class CityRestController {
 
     @Resource
-    private CityService cityService;
+    private CityManager cityManager;
 
     @RequestMapping(value = "/api/city", method = RequestMethod.POST)
     public Long createCity(@RequestBody City city) {
-        return cityService.saveCity(city);
+        return cityManager.saveCity(city);
     }
 
     @RequestMapping(value = "/api/city/search", method = RequestMethod.GET)
     public List<City> searchCity(@RequestParam(value = "pageNumber") Integer pageNumber,
                                  @RequestParam(value = "pageSize", required = false) Integer pageSize,
                                  @RequestParam(value = "searchContent") String searchContent) {
-        return cityService.searchCity(pageNumber, pageSize, searchContent);
+        return cityManager.searchCity(pageNumber, pageSize, searchContent);
     }
 
 }
