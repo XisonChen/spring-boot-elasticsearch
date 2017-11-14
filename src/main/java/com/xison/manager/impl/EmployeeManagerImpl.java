@@ -1,6 +1,6 @@
-package com.xison.manage.impl;
+package com.xison.manager.impl;
 
-import com.xison.manage.EmployeeManager;
+import com.xison.manager.EmployeeManager;
 import com.xison.model.Employee;
 import com.xison.repository.EmployeeRepository;
 import org.springframework.stereotype.Service;

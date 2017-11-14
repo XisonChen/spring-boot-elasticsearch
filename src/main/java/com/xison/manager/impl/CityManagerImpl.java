@@ -1,8 +1,8 @@
-package com.xison.manage.impl;
+package com.xison.manager.impl;
 
 import com.xison.model.City;
 import com.xison.repository.CityRepository;
-import com.xison.manage.CityManager;
+import com.xison.manager.CityManager;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.index.query.functionscore.FunctionScoreQueryBuilder;
 import org.elasticsearch.index.query.functionscore.ScoreFunctionBuilders;

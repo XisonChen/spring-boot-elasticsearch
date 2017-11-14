@@ -8,7 +8,7 @@ import java.io.Serializable;
  * created by Xison Chen
  * on 2017/10/30-1:13
  */
-@Document(indexName = "cityindex", type = "city")
+@Document(indexName = "country", type = "city")
 public class City implements Serializable {
 
     private static final long serialVersionUID = -1308779584488474081L;

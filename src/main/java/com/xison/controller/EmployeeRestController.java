@@ -1,6 +1,6 @@
 package com.xison.controller;
 
-import com.xison.manage.EmployeeManager;
+import com.xison.manager.EmployeeManager;
 import com.xison.model.Employee;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

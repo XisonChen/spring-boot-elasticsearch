@@ -1,4 +1,4 @@
-package com.xison.manage;
+package com.xison.manager;
 
 import com.xison.model.Employee;
 

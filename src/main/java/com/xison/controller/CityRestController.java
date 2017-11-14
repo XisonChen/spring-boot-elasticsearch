@@ -1,7 +1,7 @@
 package com.xison.controller;
 
 import com.xison.model.City;
-import com.xison.manage.CityManager;
+import com.xison.manager.CityManager;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
