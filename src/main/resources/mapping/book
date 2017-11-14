@@ -1,0 +1,37 @@
+{
+	"mappings": {
+		"novel": {
+			"properties": {
+				"id": {
+					"type": "long"
+				},
+				"author" : {
+					"type": "string"
+				},
+				"title": {
+					"type": "string"
+				},
+				"wordCount": {
+					"type": "integer"
+				},
+				"price": {
+					"type": "long"
+				},
+				"publishDate": {
+					"type": "date",
+					"format": "yyyy-MM-dd",
+					"index": "not_analyzed"
+				}
+			}
+		}
+	}
+}
+
+{
+	"id": 15,
+	"author": "安妮宝贝",
+	"title": "二三事",
+	"wordCount": 1200,
+	"price": 3800,
+	"publishDate": "2006-01-18"
+}
