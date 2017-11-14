@@ -19,8 +19,7 @@
 				},
 				"publishDate": {
 					"type": "date",
-					"format": "yyyy-MM-dd",
-					"index": "not_analyzed"
+					"format": "strict_date_optional_time||epoch_millis"
 				}
 			}
 		}
@@ -28,10 +27,107 @@
 }
 
 {
-	"id": 15,
+	"id": 1,
+	"author": "韩寒",
+	"title": "他的国",
+	"wordCount": 1200,
+	"price": 3600,
+	"publishDate": "2008-01-18"
+}
+
+{
+	"id": 2,
+	"author": "韩寒",
+	"title": "三重门",
+	"wordCount": 800,
+	"price": 4800,
+	"publishDate": "2000-01-18"
+}
+
+{
+	"id": 3,
+	"author": "村上春树",
+	"title": "挪威的森林",
+	"wordCount": 1800,
+	"price": 5400,
+	"publishDate": "1978-01-18"
+}
+
+{
+	"id": 4,
+	"author": "村上春树",
+	"title": "且听风吟",
+	"wordCount": 700,
+	"price": 3800,
+	"publishDate": "1986-01-18"
+}
+
+{
+	"id": 5,
+	"author": "南派三叔",
+	"title": "鬼吹灯",
+	"wordCount": 3200,
+	"price": 4600,
+	"publishDate": "2008-01-18"
+}
+
+{
+	"id": 6,
+	"author": "天蚕土豆",
+	"title": "斗破苍穹",
+	"wordCount": 5200,
+	"price": 5600,
+	"publishDate": "2008-01-18"
+}
+
+{
+	"id": 7,
 	"author": "安妮宝贝",
 	"title": "二三事",
 	"wordCount": 1200,
 	"price": 3800,
 	"publishDate": "2006-01-18"
+}
+
+127.0.0.1:8080/novel/search/author?author="安妮"&pageNo=0&pageSize=6
+127.0.0.1:8080/novel/search/title?title="鬼"&pageNo=0&pageSize=6
+127.0.0.1:8080/novel/search/price?ltePrice=4800&gtePrice=2800&pageNo=0&pageSize=6
+127.0.0.1:8080/novel/search
+{
+	"author": "寒",
+	"title": "鬼",
+	"gtePrice": 2400,
+	"ltePrice": 4800,
+	"gteWordCount": 1800,
+	"lteWordCount": 5800,
+	"pageNo": 0,
+	"pageSize": 6
+}
+
+
+
+{
+	"query": {
+		"bool": {
+			"should": [
+				{
+					"match": {
+						"author": "韩寒"
+					}
+				},
+				{
+					"match": {
+						"title": "三重门"
+					}
+				}
+			],
+			"filter": {
+				"range": {
+					"price": {
+						"gte": 2400
+					}
+				}
+			}
+		}
+	}
 }

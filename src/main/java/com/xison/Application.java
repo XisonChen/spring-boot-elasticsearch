@@ -10,7 +10,7 @@ import org.springframework.data.elasticsearch.repository.config.EnableElasticsea
  * on 2017/10/30-1:09
  */
 @SpringBootApplication
-@EnableElasticsearchRepositories
+@EnableElasticsearchRepositories(basePackages = "com.xison.repository")
 public class Application {
 
     public static void main(String[] args) {

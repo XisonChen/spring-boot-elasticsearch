@@ -9,6 +9,7 @@ package com.xison.repository;
 
 import com.xison.model.Novel;
 
+import com.xison.repository.base.CustomRepository;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 import org.springframework.stereotype.Repository;
 
@@ -20,5 +21,5 @@ import org.springframework.stereotype.Repository;
  * @since 2017-11-14 10:47
  */
 @Repository
-public interface NovelRepository extends ElasticsearchRepository<Novel, Long> {
+public interface NovelRepository  extends ElasticsearchRepository<Novel, Long>, CustomRepository {
 }

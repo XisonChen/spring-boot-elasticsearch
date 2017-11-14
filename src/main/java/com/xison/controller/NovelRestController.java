@@ -11,6 +11,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,24 +28,57 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2017-11-14 10:53
  */
 @RestController
+@RequestMapping(value = "/novel")
 public class NovelRestController {
 
     @Resource
     private NovelManager novelManager;
 
-    @RequestMapping(value = "/novel/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
     public Long newNovel(@RequestBody Novel novel) {
-       return novelManager.addNovel(novel);
+       return novelManager.saveNovel(novel);
     }
 
-    @RequestMapping(value = "/novel/get", method = RequestMethod.POST)
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    public String createNovel(@RequestBody Novel novel) {
+        return novelManager.indexNovel(novel);
+    }
+
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public void deleteNovel(@RequestBody Novel novel) {
+        novelManager.deleteNovel(novel);
+    }
+
+    @RequestMapping(value = "/get", method = RequestMethod.POST)
     public Novel getNovelById(@RequestParam(value = "id") Long id) {
         return novelManager.getById(id);
     }
 
-    @RequestMapping(value = "/novel/search", method = RequestMethod.POST)
-    public List<Novel> searchNovel(@RequestBody NovelQueryParam param) {
-        return novelManager.searchNovels(param);
+    @RequestMapping(value = "/search/author", method = RequestMethod.POST)
+    public Page<Novel> searchByAuthor(@RequestParam(value = "author") String author,
+                                      @RequestParam(value = "pageNo") Integer pageNo,
+                                      @RequestParam(value = "pageSize")  Integer pageSize) {
+        return novelManager.novelsByAuthor(author, pageNo, pageSize);
     }
 
+    @RequestMapping(value = "/search/title", method = RequestMethod.POST)
+    public Page<Novel> searchByTitleAndSortByPrice(@RequestParam(value = "title") String title,
+                                      @RequestParam(value = "pageNo") Integer pageNo,
+                                      @RequestParam(value = "pageSize")  Integer pageSize) {
+        return novelManager.novelsByTitleAndSortByPrice(title, pageNo, pageSize);
+    }
+
+    @RequestMapping(value = "/search/price", method = RequestMethod.POST)
+    public Page<Novel> searchByPrice(@RequestParam(value = "ltePrice") Long ltePrice,
+                                     @RequestParam(value = "gtePrice") Long gtePrice,
+                                      @RequestParam(value = "pageNo") Integer pageNo,
+                                      @RequestParam(value = "pageSize")  Integer pageSize) {
+        return novelManager.novelsByPrices(ltePrice, gtePrice, pageNo, pageSize);
+    }
+
+
+    @RequestMapping(value = "/search", method = RequestMethod.POST)
+    public List<Novel> searchNovels(@RequestBody NovelQueryParam param) {
+        return novelManager.searchNovels(param);
+    }
 }

@@ -29,10 +29,6 @@ public class NovelQueryParam implements Serializable {
 
     private Integer gteWordCount;
 
-    private String ltePublishDate;
-
-    private String gtePublishDate;
-
     public Integer getPageNo() {
         return pageNo;
     }
@@ -95,21 +91,5 @@ public class NovelQueryParam implements Serializable {
 
     public void setGteWordCount(Integer gteWordCount) {
         this.gteWordCount = gteWordCount;
-    }
-
-    public String getLtePublishDate() {
-        return ltePublishDate;
-    }
-
-    public void setLtePublishDate(String ltePublishDate) {
-        this.ltePublishDate = ltePublishDate;
-    }
-
-    public String getGtePublishDate() {
-        return gtePublishDate;
-    }
-
-    public void setGtePublishDate(String gtePublishDate) {
-        this.gtePublishDate = gtePublishDate;
     }
 }
